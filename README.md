@@ -26,3 +26,4 @@ docker run -it -p 6000:6000/udp -v /app/docker/temp-vol:/cryofall \
 Currently exposed environmental variables and their defaul values 
 GAME_VERSION 0.23.8.10 
 GAME_PORT 6000 
+
