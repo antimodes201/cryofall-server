@@ -29,7 +29,8 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
 		apt-get update && \
 		apt-get install -y --no-install-recommends apt-transport-https && \
 		apt-get update && \
-		apt-get install -y --no-install-recommends dotnet-sdk-3.0 && \
+		apt-get install -y --no-install-recommends dotnet-sdk-3.0 \
+		aspnetcore-runtime-2.1=2.1.0-1 && \
 		rm -rf /var/lib/apt/lists/*
 
 # add cfadmin user
@@ -46,11 +47,13 @@ RUN adduser \
 
 # install server
 USER cfadmin
-RUN cd /cryofall && \
-	wget https://atomictorch.com/Files/CryoFall_Server_v${GAME_VERSION}_NetCore.zip && \
-	unzip CryoFall_Server_v${GAME_VERSION}_NetCore.zip && \
-	rm CryoFall_Server_v${GAME_VERSION}_NetCore.zip && \
-	mv CryoFall_Server_v${GAME_VERSION}_NetCore CryoFall_Server
+
+# Deprecated install - moved into start script 
+#RUN cd /cryofall && \
+#	wget https://atomictorch.com/Files/CryoFall_Server_v${GAME_VERSION}_NetCore.zip && \
+#	unzip CryoFall_Server_v${GAME_VERSION}_NetCore.zip && \
+#	rm CryoFall_Server_v${GAME_VERSION}_NetCore.zip && \
+#	mv CryoFall_Server_v${GAME_VERSION}_NetCore CryoFall_Server
 
 ADD start.sh /scripts/start.sh
 
@@ -59,6 +62,6 @@ EXPOSE ${GAME_PORT}/udp
 
 # Make a volume
 # contains configs and world saves
-VOLUME /cryofall/CryoFall_Server/Data
+VOLUME /cryofall
 
 CMD ["/scripts/start.sh"]
