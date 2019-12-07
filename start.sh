@@ -29,7 +29,7 @@ then
 	unzip CryoFall_Server_v${GAME_VERSION}_NetCore.zip
 	rm CryoFall_Server_v${GAME_VERSION}_NetCore.zip
 	mv CryoFall_Server_v${GAME_VERSION}_NetCore CryoFall_Server
-	cp -f /cryofall/CryoFall_Server_${currentVer}/Data /cryofall/CryoFall_Server/Data
+	cp -rfv /cryofall/CryoFall_Server_${currentVer}/Data /cryofall/CryoFall_Server
 
 	printf "${GAME_VERSION}\n" > ${verFile}
 else

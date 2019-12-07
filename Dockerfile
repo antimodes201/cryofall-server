@@ -13,7 +13,7 @@ ENV INSTANCE_NAME "default"
 ENV GAME_PORT "6000"
 
 # Being set as the DL is version dependent.  Petition to be set to latest
-ENV GAME_VERSION "0.23.8.10"
+ENV GAME_VERSION "0.24.8.1"
 
 # dependencies
 RUN dpkg --add-architecture i386 && \
