@@ -13,7 +13,7 @@ ENV INSTANCE_NAME "default"
 ENV GAME_PORT "6000"
 
 # Being set as the DL is version dependent.  Petition to be set to latest
-ENV GAME_VERSION "0.24.8.1"
+ENV GAME_VERSION "0.25.4.1"
 
 # dependencies
 RUN dpkg --add-architecture i386 && \
@@ -30,7 +30,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
 		apt-get install -y --no-install-recommends apt-transport-https && \
 		apt-get update && \
 		apt-get install -y --no-install-recommends dotnet-sdk-3.0 \
-		aspnetcore-runtime-2.1=2.1.0-1 && \
+		aspnetcore-runtime-3.1 && \
 		rm -rf /var/lib/apt/lists/*
 
 # add cfadmin user
